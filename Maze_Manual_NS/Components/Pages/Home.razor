@@ -1,7 +1,10 @@
 ﻿@page "/"
+@using Maze_Manual_NS.models
+@using Maze_Manual_NS.Services
+@inject IMonsterService MonsterService
 
-<PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
+@foreach (Monster monster in MonsterService.Monsters)
+{
+    <p> @monster.Name</p>
+}

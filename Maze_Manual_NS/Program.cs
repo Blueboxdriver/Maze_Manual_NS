@@ -1,4 +1,5 @@
 using Maze_Manual_NS.Components;
+using Maze_Manual_NS.Services;
 
 namespace Maze_Manual_NS;
 
@@ -11,7 +12,9 @@ public class Program
         // Add services to the container.
         builder.Services.AddRazorComponents()
             .AddInteractiveServerComponents();
-
+        
+        builder.Services.AddScoped<IMonsterService, MonsterService>();
+        
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
