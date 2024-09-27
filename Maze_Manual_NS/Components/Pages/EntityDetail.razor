@@ -3,9 +3,31 @@
 @using Maze_Manual_NS.models
 @inject ICharacterService CharacterService
 
+@if (monster == null)
+{
+    <p>Error</p>
+}
+else
+{
+    <p>@monster.Name</p>
+    <p>Health: @monster.Health</p>
+    <p>Damage: @monster.BaseDam</p>
+    <br/>
+    <img src="@monster.ImgURL"/>
+}
 
-<p> HI!</p>
+
+
+
 @code
 {
-    [Parameter] public int CharacterId { get; set; }
+    [Parameter] 
+    public int CharacterId { get; set; }
+
+    private Monster monster { get; set; }
+
+    protected override void OnInitialized()
+    {
+        monster = CharacterService.Monsters.FirstOrDefault(m => m.CharacterId == CharacterId);
+    }
 }
