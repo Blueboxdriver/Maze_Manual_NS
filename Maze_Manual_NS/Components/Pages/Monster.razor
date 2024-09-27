@@ -2,8 +2,26 @@
 @using Maze_Manual_NS.Services
 @using Maze_Manual_NS.models
 @inject ICharacterService CharacterService
+@inject NavigationManager NavigationManager
 
-@foreach (models.Monster test in CharacterService.Monsters)
-{
-    <p> <img src="@test.ImgURL" width="150" height="150"/> @test.Name | HP: @test.Health</p>
+<div class="monster-container">
+    @foreach (models.Monster test in CharacterService.Monsters)
+    {
+        <div class="monster-item" @onclick="() => NavigateToDetails(test.CharacterId)">
+            <p class="monster-name">@test.Name</p>
+            <p class="monster-health">Health: @test.Health</p>
+            <p class="monster-damage">Damage: @test.BaseDam</p>
+            <img src="@test.ImgURL" width="150" height="150"/>
+        </div>
+    }
+</div>
+
+@code {
+    int counter = 0;
+
+    void NavigateToDetails(int characterId)
+    {
+        NavigationManager.NavigateTo($"/entitydetail/{characterId}");
+    }
+
 }

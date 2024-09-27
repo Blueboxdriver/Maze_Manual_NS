@@ -1,0 +1,11 @@
+@page "/entitydetail/{CharacterId:int}"
+@using Maze_Manual_NS.Services
+@using Maze_Manual_NS.models
+@inject ICharacterService CharacterService
+
+
+<p> HI!</p>
+@code
+{
+    [Parameter] public int CharacterId { get; set; }
+}
