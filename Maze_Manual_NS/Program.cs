@@ -13,7 +13,7 @@ public class Program
         builder.Services.AddRazorComponents()
             .AddInteractiveServerComponents();
         
-        builder.Services.AddScoped<IMonsterService, MonsterService>();
+        builder.Services.AddScoped<ICharacterService, CharacterService>();
         
         var app = builder.Build();
 

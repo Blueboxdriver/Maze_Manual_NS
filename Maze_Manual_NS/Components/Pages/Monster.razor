@@ -1,0 +1,9 @@
+﻿@page "/monster"
+@using Maze_Manual_NS.Services
+@using Maze_Manual_NS.models
+@inject ICharacterService CharacterService
+
+@foreach (models.Monster test in CharacterService.Monsters)
+{
+    <p> <img src="@test.ImgURL" width="150" height="150"/> @test.Name | HP: @test.Health</p>
+}

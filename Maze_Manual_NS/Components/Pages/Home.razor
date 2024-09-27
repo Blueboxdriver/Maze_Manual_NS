@@ -1,10 +1,36 @@
 ﻿@page "/"
 @using Maze_Manual_NS.models
 @using Maze_Manual_NS.Services
-@inject IMonsterService MonsterService
+@using Maze_Manual_NS.models
+@inject ICharacterService MonsterService
 
 
-@foreach (Monster monster in MonsterService.Monsters)
-{
-    <p> @monster.Name</p>
-}
+<title>EHW Manual Page</title>
+
+<h1>Escape from Wulthering Heights</h1>
+
+<p> Welcome to escape from Wulther Heights, a console based adventure where your goal is to escape the ever-changing basement of Wulthering Heights following
+    the bizarre displacement of reality caused by the all powerful Golden Boughs.</p>
+<br/>
+
+<p> You play as [INSERT PLAYER HERE], a unfortunate soul who has just escaped from being molded into the 'Perfect Dough'. However, you find yourself
+    lost in a shifting maze filled with beings derived from the Wild Hunt and those who have become the pecatulum.</p>    
+<br/>
+<h3> HOW TO PLAY</h3> 
+
+<p> Starting the program prompts the user with the following options for difficulty</p>
+
+<ul>
+    <li>[EASY]: 15x15 Maze</li>
+    <li>[MODERATE]: 25x25 Maze</li>
+    <li>[HARD]: 35x35 Maze</li>
+    <li>[GRADER MUST DIE]: 55x55 Maze</li>
+</ul>
+<br/>
+<p> After difficulty is selected, the game begins, allowing the player to utilize the following keybinds.</p>
+<ul>
+    <li>Movement can be controlled by the WASD or Arrow Keys</li>
+    <li> The [K] Opens the inventory.</li>
+</ul>
+
+<p> The goal of the game is to explore, fight monsters, collect items and then eventually escape.</p>

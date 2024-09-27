@@ -7,19 +7,17 @@ public class Monster
 {
     /// <inheritdoc />
     public int BaseDam { get; set; }
-
-    /// <inheritdoc />
+    
     public int Health { get; set; }
-
-    /// <summary>
-    ///     Represents whether or not a monster is stunned.
-    /// </summary>
-    public bool IsStunned { get; set; }
-
+    
     /// <summary>
     ///     Represents the name of a monster.
     /// </summary>
     public string Name { get; set; }
+    
+    public int CharacterId { get; set; }
+    
+    public string ImgURL { get; set; }
 
     private static readonly Random Rand = new();
 
@@ -30,31 +28,16 @@ public class Monster
     /// <param name="name">Determines the name of Monster</param>
     /// <param name="health">Determines the max health of the Monster</param>
     /// <param name="damage">Determines the damage a monster can inflict</param>
-    public Monster(string name, int health, int damage)
+    public Monster(int characterId, string name, string imgUrl, int health, int damage)
     {
+        CharacterId = characterId;
         Name = name;
+        ImgURL = imgUrl;
         Health = health;
         BaseDam = damage;
-    }
-
-    /// <summary>
-    ///     Randomly selects a monster object from a list of monsters.
-    /// </summary>
-    /// <returns>A Monster for the player to fight.</returns>
-    public static Monster GenerateMonster(int index)
-    {
-        List<Monster> monsters =
-        [
-            new("Peccatulum Irae", 75, 10),
-            new("Peccatulum Morositatis", 75, 10),
-            new("Edgar House Butler", 100, 15),
-            new("Josephine of the Wild Hunt", 125, 20),
-            new("Hindley of the Wild Hunt", 125, 20),
-            new("Linton of the Wild Hunt", 125, 20)
-        ];
         
-        return monsters[index];
     }
+    
 
     /// <summary>
     ///     Corresponds a string to a specific monster
