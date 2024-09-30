@@ -14,6 +14,8 @@ public class Program
             .AddInteractiveServerComponents();
         
         builder.Services.AddScoped<ICharacterService, CharacterService>();
+        builder.Services.AddScoped<IItemService, ItemService>();
+
         
         var app = builder.Build();
 

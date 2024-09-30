@@ -1,0 +1,40 @@
+.item-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Creates four equal columns */
+    grid-template-rows: repeat(2, auto); /* Creates two rows, height based on content */
+    gap: 20px; /* Adds space between boxes */
+    justify-items: center; /* Center items in their grid cells */
+    margin: 0 auto; /* Center the grid container */
+    max-width: 1200px; /* Optional: set a max width for the grid container */
+}
+
+.potion-item, .weapon-item {
+    background-color: lightblue; /* Default background color */
+    border: 2px solid blue; /* Default border color */
+    border-radius: 8px; /* Rounded corners */
+    padding: 10px; /* Padding inside the box */
+    width: 200px; /* Fixed width for the boxes */
+    height: 300px; /* Fixed height to ensure uniformity */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    display: flex;
+    flex-direction: column; /* Arrange content in a column */
+    align-items: center; /* Center items inside the box */
+    justify-content: space-between; /* Distribute space evenly inside the box */
+}
+
+.potion-item {
+    background-color: lightblue; /* Light blue background for potions */
+    border: 2px solid blue; /* Blue border for potions */
+}
+
+.weapon-item {
+    background-color: lightcoral; /* Light red background for weapons */
+    border: 2px solid red; /* Red border for weapons */
+}
+
+/* Ensure images are scaled properly without distorting */
+img {
+    width: 100%; /* Image takes up the full width of the container */
+    height: 150px; /* Fixed height for the images */
+    object-fit: contain; /* Ensures the image scales correctly */
+}

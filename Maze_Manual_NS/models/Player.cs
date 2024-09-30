@@ -25,6 +25,5 @@ public class Player : ICharacterService
         ImgUrl = imgUrl;
         Damage = damage;
         Description = new MarkupString(description);
-        Weapon defaultWeapon = new("Basic Baton", "A baton you found when you woke up.", 10);
     }
 }

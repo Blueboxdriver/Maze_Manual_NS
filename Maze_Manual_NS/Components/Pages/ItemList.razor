@@ -1,0 +1,35 @@
+@page "/item"
+@using Maze_Manual_NS.Services
+@using Maze_Manual_NS.models
+@inject IItemService ItemService
+@inject NavigationManager NavigationManager
+
+<div class="item-container">
+    @foreach (Item items in ItemService.Items)
+    {
+        if (items is Potion)
+        {
+            <div class="potion-item" @onclick="() => NavigateToDetails(items.ItemId)">
+                <img src="@items.ItemUrl" width="150" height="150" alt="HI!"/>
+                <p>@items.ItemName</p>
+                <p>Health Restored: @items.ItemEffect</p>
+            </div>
+        }
+        else
+        {
+            <div class="weapon-item" @onclick="() => NavigateToDetails(items.ItemId)">
+                <img src="@items.ItemUrl" width="150" height="150" alt="HI"/>
+                <p>@items.ItemName</p>
+                <p>Damage: @items.ItemEffect</p>
+            </div>
+        }
+    }
+</div>
+
+@code {
+
+    void NavigateToDetails(int itemId)
+    {
+        NavigationManager.NavigateTo($"/entitydetail/{itemId}");
+    }
+}

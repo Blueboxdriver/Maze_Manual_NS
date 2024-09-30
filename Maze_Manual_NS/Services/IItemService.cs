@@ -3,11 +3,9 @@ using models;
 public interface IItemService
 {
     public string ItemName { get; set; }
-    
-    public int ItemDamage { get; set; }
-    
+    public int ItemId { get; set; }
+    public int ItemEffect { get; set; }
     public string ItemDescription { get; set; }
-    
-    public List<Weapon> Weapons { get; set; }
-    public List<Potion> Potions { get; set; }
+    public string ItemUrl { get; set; } 
+    List<Item> Items { get; set; }
 }

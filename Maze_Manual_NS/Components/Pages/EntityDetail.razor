@@ -1,19 +1,12 @@
-@page "/entitydetail/{CharacterId:int}"
+@page "/entitydetail/{PageId:int}"
 @using Maze_Manual_NS.Services
 @using Maze_Manual_NS.models
 @inject ICharacterService CharacterService
+@inject IItemService ItemService
 
 <div class="entity-detail-container">
     <div class="description">
-        @if (monster == null)
-        {
-            <h2>@player.Name</h2>
-            <p>Health: @player.Health</p>
-            <p>Damage: @player.Damage</p>
-            <br/>
-            <p>@player.Description</p>
-        }
-        else
+        @if (monster != null)
         {
             <h2>@monster.Name</h2>
             <p>Health: @monster.Health</p>
@@ -21,40 +14,88 @@
             <br/>
             <p>@monster.Description</p>
         }
-    </div>
-    
-    <div class="image-container">
-        @if (monster == null)
+        else if (player != null)
         {
-        <img src="@player.ImgUrl" alt="@player.Name"/>
+            <h2>@player.Name</h2>
+            <p>Health: @player.Health</p>
+            <p>Damage: @player.Damage</p>
+            <br/>
+            <p>@player.Description</p>
         }
-        else
+        else if (weapon != null)
         {
-        <img src="@monster.ImgUrl" alt="@monster.Name"/>
+            <h2>@weapon.ItemName</h2>
+            <p>Damage: @weapon.ItemEffect</p>
+            <br/>
+            <p>@weapon.ItemDescription</p>
+        }
+        else if (potion != null)
+        {
+            <h2>@potion.ItemName</h2>
+            <p>Health Restored: @potion.ItemEffect</p>
+            <br/>
+            <p>@potion.ItemDescription</p>
+        }
+    </div>
+
+    <div class="image-container">
+        @if (monster != null)
+        {
+            <img src="@monster.ImgUrl" alt="@monster.Name"/>
+        }
+        else if (player != null)
+        {
+            <img src="@player.ImgUrl" alt="@player.Name"/>
+        }
+        else if (weapon != null)
+        {
+            <img src="@weapon.ItemUrl" alt="@weapon.ItemName"/>
+        }
+        else if (potion != null)
+        {
+            <img src="@potion.ItemUrl" alt="@potion.ItemName"/>
         }
     </div>
 </div>
 
 @code
 {
-    [Parameter] 
-    public int CharacterId { get; set; }
+    [Parameter] public int PageId { get; set; }
 
     private Monster monster;
     private Player player;
+    private Potion potion;
+    private Weapon weapon;
+
 
     protected override void OnInitialized()
     {
-        var entity = CharacterService.Entities.FirstOrDefault(e => e.CharacterId == CharacterId);
+        ICharacterService? entity = CharacterService.Entities.FirstOrDefault(e => e.CharacterId == PageId);
 
-        switch (entity)
+        if (entity != null)
         {
-            case Monster foundMonster:
-                monster = foundMonster;
-                break;
-            case Player foundPlayer:
-                player = foundPlayer;
-                break;
+            switch (entity)
+            {
+                case Monster foundMonster:
+                    monster = foundMonster;
+                    break;
+                case Player foundPlayer:
+                    player = foundPlayer;
+                    break;
+            }
+        }
+        else
+        {
+            Item? item = ItemService.Items.FirstOrDefault(e => e.ItemId == PageId);
+            switch (item)
+            {
+                case Potion foundPotion:
+                    potion = foundPotion;
+                    break;
+                case Weapon foundWeapon:
+                    weapon = foundWeapon;
+                    break;
+            }
         }
     }
 }

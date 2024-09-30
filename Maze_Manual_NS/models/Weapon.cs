@@ -5,13 +5,5 @@ namespace Maze_Manual_NS.models;
 /// </summary>
 public class Weapon : Item
 {
-    /// <summary>
-    ///     Creates a new object of the <see cref="Weapon" /> class with a description, pickup message and damage value.
-    /// </summary>
-    /// <param name="desc">The description of a weapon.</param>
-    /// <param name="pickupMessage">The message displayed when the weapon is picked up.</param>
-    /// <param name="damage">The damage value of the weapon.</param>
-    public Weapon(string desc, string pickupMessage, int damage) : base(desc, pickupMessage, damage)
-    {
-    }
+    public Weapon(string name, string weaponUrl, int weaponEffect, int itemId, string weaponDescription) : base (name, weaponUrl, weaponEffect, itemId, weaponDescription) {}
 }

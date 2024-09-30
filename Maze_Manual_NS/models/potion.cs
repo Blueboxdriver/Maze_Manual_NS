@@ -5,13 +5,5 @@ namespace Maze_Manual_NS.models;
 /// </summary>
 public class Potion : Item
 {
-    /// <summary>
-    ///     Creates a new object of the <see cref="Weapon" /> class with a description, pickup message and damage value.
-    /// </summary>
-    /// <param name="desc">The description of a potion.</param>
-    /// <param name="pickupMessage">The message displayed when the potion is picked up.</param>
-    /// <param name="healthRestored">The amount of health restored</param>
-    public Potion(string desc, string pickupMessage, int healthRestored) : base(desc, pickupMessage, healthRestored)
-    {
-    }
+    public Potion(string name, string potionUrl, int potionEffect, int itemId, string potionDescription) : base(name, potionUrl, potionEffect, itemId, potionDescription) {}
 }
