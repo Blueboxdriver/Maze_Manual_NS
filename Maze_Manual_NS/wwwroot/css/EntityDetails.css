@@ -1,0 +1,37 @@
+body {
+    margin: 0; /* Remove default body margin */
+    padding: 0; /* Remove default body padding */
+    font-family: Arial, sans-serif; /* Set a default font */
+}
+
+.entity-detail-container {
+    display: flex; /* Use flexbox for layout */
+    max-width: 100%; /* Allow full width of the viewport */
+    padding: 20px; /* Add padding around the container */
+}
+
+.description {
+    flex: 1; /* Take up available space */
+    padding-right: 20px; /* Space between text and image */
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column; /* Arrange image vertically */
+    align-items: flex-end; /* Align image to the right */
+}
+
+.image-container img {
+    width: 500px; /* Set a fixed width for the image */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 10px; /* Space above the image */
+}
+
+h2 {
+    margin: 0; /* Remove margin for the heading */
+    font-size: 24px; /* Adjust font size for the name */
+}
+
+p {
+    margin: 5px 0; /* Add margin for paragraphs */
+}

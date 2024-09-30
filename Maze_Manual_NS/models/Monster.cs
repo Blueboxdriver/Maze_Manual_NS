@@ -1,4 +1,5 @@
 using Maze_Manual_NS.Services;
+using Microsoft.AspNetCore.Components;
 
 namespace Maze_Manual_NS.models;
 
@@ -12,6 +13,7 @@ public class Monster : ICharacterService
     public string Name { get; set; }
     public string ImgUrl { get; set; }
     public int CharacterId { get; set; }
+    public MarkupString Description { get; set; }
     public List<ICharacterService> Entities { get; set; }
 
     private static readonly Random Rand = new();
@@ -23,14 +25,14 @@ public class Monster : ICharacterService
     /// <param name="name">Determines the name of Monster</param>
     /// <param name="health">Determines the max health of the Monster</param>
     /// <param name="damage">Determines the damage a monster can inflict</param>
-    public Monster(int characterId, string name, string imgUrl, int health, int damage)
+    public Monster(int characterId, string name, string imgUrl, int health, int damage, string description)
     {
         CharacterId = characterId;
         Name = name;
         ImgUrl = imgUrl;
         Health = health;
         Damage = damage;
-        
+        Description = new MarkupString(description);
     }
     
 

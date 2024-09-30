@@ -3,22 +3,37 @@
 @using Maze_Manual_NS.models
 @inject ICharacterService CharacterService
 
-@if (monster == null)
-{
-    <p>@player.Name</p>
-    <p>Health: @player.Health</p>
-    <p>Damage: @player.Damage</p>
-    <br/>
-    <img src="@player.ImgUrl"/>
-}
-else
-{
-    <p>@monster.Name</p>
-    <p>Health: @monster.Health</p>
-    <p>Damage: @monster.Damage</p>
-    <br/>
-    <img src="@monster.ImgUrl"/>
-}
+<div class="entity-detail-container">
+    <div class="description">
+        @if (monster == null)
+        {
+            <h2>@player.Name</h2>
+            <p>Health: @player.Health</p>
+            <p>Damage: @player.Damage</p>
+            <br/>
+            <p>@player.Description</p>
+        }
+        else
+        {
+            <h2>@monster.Name</h2>
+            <p>Health: @monster.Health</p>
+            <p>Damage: @monster.Damage</p>
+            <br/>
+            <p>@monster.Description</p>
+        }
+    </div>
+    
+    <div class="image-container">
+        @if (monster == null)
+        {
+        <img src="@player.ImgUrl" alt="@player.Name"/>
+        }
+        else
+        {
+        <img src="@monster.ImgUrl" alt="@monster.Name"/>
+        }
+    </div>
+</div>
 
 @code
 {

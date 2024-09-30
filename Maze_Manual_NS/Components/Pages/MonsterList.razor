@@ -4,7 +4,7 @@
 @inject ICharacterService CharacterService
 @inject NavigationManager NavigationManager
 
-<div>
+<div class="entity-container">
     @foreach (var test in CharacterService.Entities)
     {
         if (test is Monster)

@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Components;
+
 namespace Maze_Manual_NS.Services;
 using models;
 public interface ICharacterService
@@ -8,4 +10,5 @@ public interface ICharacterService
     public string ImgUrl { get; set; }
     public int Health { get; set; }
     public int Damage { get; set; }
+    public MarkupString Description { get; set; }
 }

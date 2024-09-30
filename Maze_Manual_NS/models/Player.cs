@@ -1,4 +1,5 @@
 using Maze_Manual_NS.Services;
+using Microsoft.AspNetCore.Components;
 
 namespace Maze_Manual_NS.models;
 
@@ -13,15 +14,17 @@ public class Player : ICharacterService
     public int CharacterId { get; set; }
     public string Name { get; set; }
     public string ImgUrl { get; set; }
+    public MarkupString Description { get; set; }
     public List<ICharacterService> Entities { get; set; }
     
-    public Player(int characterId, string name, string imgUrl, int health, int damage)
+    public Player(int characterId, string name, string imgUrl, int health, int damage, string description)
     {
         CharacterId = characterId;
         Health = health;
         Name = name;
         ImgUrl = imgUrl;
         Damage = damage;
+        Description = new MarkupString(description);
         Weapon defaultWeapon = new("Basic Baton", "A baton you found when you woke up.", 10);
     }
 }
