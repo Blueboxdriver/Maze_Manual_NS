@@ -14,13 +14,4 @@ public class Potion : Item
     public Potion(string desc, string pickupMessage, int healthRestored) : base(desc, pickupMessage, healthRestored)
     {
     }
-
-    /// <summary>
-    ///     Adds the potion's <see cref="Item.ItemEffect" /> value to the player's <see cref="Player.Health" />
-    /// </summary>
-    /// <param name="player">The player who's damage value is being boosted.</param>
-    public override void ApplyEffect(Player player)
-    {
-        player.Health += ItemEffect;
-    }
 }

@@ -1,23 +1,18 @@
+using Maze_Manual_NS.Services;
+
 namespace Maze_Manual_NS.models;
 
 /// <summary>
 ///     Represents a monster in the maze and implements the <see cref="ICharacter" /> interface.
 /// </summary>
-public class Monster
+public class Monster : ICharacterService
 {
-    /// <inheritdoc />
-    public int BaseDam { get; set; }
-    
     public int Health { get; set; }
-    
-    /// <summary>
-    ///     Represents the name of a monster.
-    /// </summary>
+    public int Damage { get; set; }
     public string Name { get; set; }
-    
+    public string ImgUrl { get; set; }
     public int CharacterId { get; set; }
-    
-    public string ImgURL { get; set; }
+    public List<ICharacterService> Entities { get; set; }
 
     private static readonly Random Rand = new();
 
@@ -32,9 +27,9 @@ public class Monster
     {
         CharacterId = characterId;
         Name = name;
-        ImgURL = imgUrl;
+        ImgUrl = imgUrl;
         Health = health;
-        BaseDam = damage;
+        Damage = damage;
         
     }
     

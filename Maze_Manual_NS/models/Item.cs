@@ -34,16 +34,4 @@ public abstract class Item
         ItemPickUp = itemPickup;
         ItemEffect = itemEffect;
     }
-
-    /// <summary>
-    ///     Selects a random item from <see cref="_items" />.
-    ///     If the item selected is a weapon, it removes the item from <see cref="_items" /> to prevent duplicates.
-    /// </summary>
-    /// <returns>The randomly selected item.</returns>
-
-    /// <summary>
-    ///     Abstract method that applies an item's effect to a player.
-    /// </summary>
-    /// <param name="player">The player an item's effect is being applied to</param>
-    public abstract void ApplyEffect(Player player);
 }

@@ -4,20 +4,32 @@
 @inject ICharacterService CharacterService
 @inject NavigationManager NavigationManager
 
-<div class="monster-container">
-    @foreach (models.Monster test in CharacterService.Monsters)
+<div>
+    @foreach (var test in CharacterService.Entities)
     {
-        <div class="monster-item" @onclick="() => NavigateToDetails(test.CharacterId)">
-            <p class="monster-name">@test.Name</p>
-            <p class="monster-health">Health: @test.Health</p>
-            <p class="monster-damage">Damage: @test.BaseDam</p>
-            <img src="@test.ImgURL" width="150" height="150"/>
-        </div>
+        if (test is Monster)
+        {
+            <div class="monster-item" @onclick="() => NavigateToDetails(test.CharacterId)">
+                <img src="@test.ImgUrl" width="150" height="150"/>
+                <p>@test.Name</p>
+                <p>Health: @test.Health</p>
+                <p>Damage: @test.Damage</p>
+            </div>
+        }
+        else
+        { 
+            <div class="player-item" @onclick="() => NavigateToDetails(test.CharacterId)">
+                <img src="@test.ImgUrl" width="150" height="150"/>
+                <p>@test.Name</p>
+                <p>Health: @test.Health</p>
+                <p>Damage: @test.Damage</p>
+            </div>
+        }
+
     }
 </div>
 
 @code {
-    int counter = 0;
 
     void NavigateToDetails(int characterId)
     {

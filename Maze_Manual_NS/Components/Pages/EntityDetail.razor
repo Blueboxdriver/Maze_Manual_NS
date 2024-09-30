@@ -5,29 +5,41 @@
 
 @if (monster == null)
 {
-    <p>Error</p>
+    <p>@player.Name</p>
+    <p>Health: @player.Health</p>
+    <p>Damage: @player.Damage</p>
+    <br/>
+    <img src="@player.ImgUrl"/>
 }
 else
 {
     <p>@monster.Name</p>
     <p>Health: @monster.Health</p>
-    <p>Damage: @monster.BaseDam</p>
+    <p>Damage: @monster.Damage</p>
     <br/>
-    <img src="@monster.ImgURL"/>
+    <img src="@monster.ImgUrl"/>
 }
-
-
-
 
 @code
 {
     [Parameter] 
     public int CharacterId { get; set; }
 
-    private Monster monster { get; set; }
+    private Monster monster;
+    private Player player;
 
     protected override void OnInitialized()
     {
-        monster = CharacterService.Monsters.FirstOrDefault(m => m.CharacterId == CharacterId);
+        var entity = CharacterService.Entities.FirstOrDefault(e => e.CharacterId == CharacterId);
+
+        switch (entity)
+        {
+            case Monster foundMonster:
+                monster = foundMonster;
+                break;
+            case Player foundPlayer:
+                player = foundPlayer;
+                break;
+        }
     }
 }
