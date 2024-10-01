@@ -1,0 +1,113 @@
+@page "/note"
+@using Maze_Manual_NS.models
+@using Maze_Manual_NS.Services
+@inject INoteService NoteService
+@inject ICharacterService CharacterService
+@inject IItemService ItemService
+
+<h3>Notes</h3>
+
+Note: <input @bind="ContentText" />
+
+<button @onclick="CreateNote">Submit Post</button>
+<div class="reference-link">
+    <h5> Reference Links </h5>
+    @foreach (var character in CharacterService.Entities)
+    {
+    <div class="reference-box">
+        <button @onclick="() => AddReferenceLink(character.Name, character.CharacterId)">Add @character.Name</button>
+    </div>
+    }
+    @foreach (var item in ItemService.Items)
+    {
+    <div class="reference-box">
+        <button @onclick="() => AddReferenceLink(item.ItemName, item.ItemId)">Add @item.ItemName</button>
+    </div>
+    }
+</div>
+
+@foreach (var tNotes in NoteService.Notes)
+{
+    <div>
+        @if (EdittedNote != null && tNotes.NoteId == EdittedNote.NoteId)
+        {
+            <input @bind="EdittedNote.Content" />
+            <button @onclick="() => SubmitEdit(EdittedNote)">Submit Edit</button>
+            <div class="reference-link">
+                <h5> Reference Links </h5>
+                @foreach (var character in CharacterService.Entities)
+                {
+                    <div class="reference-box">
+                        <button @onclick="() => AddReferenceLinkToEdit(character.Name, character.CharacterId)">Add @character.Name</button>
+                    </div>
+                }
+                @foreach (var item in ItemService.Items)
+                {
+                    <div class="reference-box">
+                        <button @onclick="() => AddReferenceLinkToEdit(item.ItemName, item.ItemId)">Add @item.ItemName</button>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p>@((MarkupString)tNotes.Content)</p> <!-- Render HTML content -->
+            <button @onclick="() => DeleteNote(tNotes)">Delete</button>
+            <button @onclick="() => EditNote(tNotes)">Edit</button>
+        }
+    </div>
+}
+
+
+@code
+{   
+    public string ContentText { get; set; }
+    public Note EdittedNote { get; set; }
+
+    public async Task CreateNote()
+    {
+        Note toAdd = new Note()
+        {
+            Content = ContentText
+        };
+        await NoteService.AddNote(toAdd);
+        ContentText = "";
+        StateHasChanged();
+    }
+
+    public async Task DeleteNote(Note toDelete)
+    {
+        await NoteService.DeleteNote(toDelete);
+        StateHasChanged();
+    }
+    
+    public void EditNote(Note toEdit)
+    {
+        EdittedNote = new Note()
+        {
+            NoteId = toEdit.NoteId,
+            Content = toEdit.Content
+        };
+    }
+
+    public async Task SubmitEdit(Note note)
+    {
+        await NoteService.EditNote(note);
+        EdittedNote = null;
+    }
+
+    public void AddReferenceLink(string name, int id)
+    {    
+        string url = $"<a href=\"/entitydetail/{id}\">{name}</a>";
+        ContentText += $" {url} ";  
+    }
+    
+    public void AddReferenceLinkToEdit(string name, int id)
+    {
+        if (EdittedNote != null)
+        {
+            string url = $"<a href=\"/entitydetail/{id}\">{name}</a>";
+            EdittedNote.Content += $" {url} ";
+        }
+    }
+}

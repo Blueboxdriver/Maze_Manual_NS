@@ -1,0 +1,15 @@
+.reference-link {
+    position: fixed; /* Fix the position on the right side of the screen */
+    right: 0; /* Align to the right */
+    top: 55px; /* Adjust the top position if needed */
+    width: 200px; /* Set a fixed width for the reference box */
+}
+
+.reference-box {
+    margin-bottom: 5px; /* Space between buttons */
+}
+
+.reference-box button {
+    width: 100%; /* Make buttons take the full width of the reference box */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}

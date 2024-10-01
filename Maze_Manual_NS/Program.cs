@@ -15,7 +15,7 @@ public class Program
         
         builder.Services.AddScoped<ICharacterService, CharacterService>();
         builder.Services.AddScoped<IItemService, ItemService>();
-
+        builder.Services.AddSingleton<INoteService, NoteService>();
         
         var app = builder.Build();
 
