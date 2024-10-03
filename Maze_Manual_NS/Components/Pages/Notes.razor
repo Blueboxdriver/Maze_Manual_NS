@@ -7,41 +7,41 @@
 
 <h3>Notes</h3>
 
-Note: <input @bind="ContentText" />
+Note: <input @bind="ContentText"/>
 
 <button @onclick="CreateNote">Submit Post</button>
 <div class="reference-link">
     <h5> Reference Links </h5>
-    @foreach (var character in CharacterService.Entities)
+    @foreach (ICharacterService character in CharacterService.Entities)
     {
-    <div class="reference-box">
-        <button @onclick="() => AddReferenceLink(character.Name, character.CharacterId)">Add @character.Name</button>
-    </div>
+        <div class="reference-box">
+            <button @onclick="() => AddReferenceLink(character.Name, character.CharacterId)">Add @character.Name</button>
+        </div>
     }
-    @foreach (var item in ItemService.Items)
+    @foreach (Item item in ItemService.Items)
     {
-    <div class="reference-box">
-        <button @onclick="() => AddReferenceLink(item.ItemName, item.ItemId)">Add @item.ItemName</button>
-    </div>
+        <div class="reference-box">
+            <button @onclick="() => AddReferenceLink(item.ItemName, item.ItemId)">Add @item.ItemName</button>
+        </div>
     }
 </div>
 
-@foreach (var tNotes in NoteService.Notes)
+@foreach (Note tNotes in NoteService.Notes)
 {
     <div>
-        @if (EdittedNote != null && tNotes.NoteId == EdittedNote.NoteId)
+        @if (EditedNote != null && tNotes.NoteId == EditedNote.NoteId)
         {
-            <input @bind="EdittedNote.Content" />
-            <button @onclick="() => SubmitEdit(EdittedNote)">Submit Edit</button>
+            <input @bind="EditedNote.Content"/>
+            <button @onclick="() => SubmitEdit(EditedNote)">Submit Edit</button>
             <div class="reference-link">
                 <h5> Reference Links </h5>
-                @foreach (var character in CharacterService.Entities)
+                @foreach (ICharacterService character in CharacterService.Entities)
                 {
                     <div class="reference-box">
                         <button @onclick="() => AddReferenceLinkToEdit(character.Name, character.CharacterId)">Add @character.Name</button>
                     </div>
                 }
-                @foreach (var item in ItemService.Items)
+                @foreach (Item item in ItemService.Items)
                 {
                     <div class="reference-box">
                         <button @onclick="() => AddReferenceLinkToEdit(item.ItemName, item.ItemId)">Add @item.ItemName</button>
@@ -51,7 +51,8 @@ Note: <input @bind="ContentText" />
         }
         else
         {
-            <p>@((MarkupString)tNotes.Content)</p> <!-- Render HTML content -->
+            <p>@((MarkupString)tNotes.Content)</p>
+            <!-- Render HTML content -->
             <button @onclick="() => DeleteNote(tNotes)">Delete</button>
             <button @onclick="() => EditNote(tNotes)">Edit</button>
         }
@@ -60,13 +61,23 @@ Note: <input @bind="ContentText" />
 
 
 @code
-{   
-    public string ContentText { get; set; }
-    public Note EdittedNote { get; set; }
+{
+    /// <summary>
+    ///     A string representing the text content of a note
+    /// </summary>
+    private string ContentText { get; set; }
 
-    public async Task CreateNote()
+    /// <summary>
+    ///     A note object that's use to determine what note is being edited
+    /// </summary>
+    private Note EditedNote { get; set; }
+
+    /// <summary>
+    ///     Handles the UI action of creating a note, passing it to <see cref="NoteService" /> to add to the list of Notes
+    /// </summary>
+    private async Task CreateNote()
     {
-        Note toAdd = new Note()
+        Note toAdd = new()
         {
             Content = ContentText
         };
@@ -75,39 +86,64 @@ Note: <input @bind="ContentText" />
         StateHasChanged();
     }
 
-    public async Task DeleteNote(Note toDelete)
+    /// <summary>
+    ///     Handles the UI action of deleting a note by passing the note being deleted to <seealso cref="NoteService" />
+    ///     remove from the list of Notes
+    /// </summary>
+    /// <param name="toDelete">The note that is being deleted</param>
+    private async Task DeleteNote(Note toDelete)
     {
         await NoteService.DeleteNote(toDelete);
         StateHasChanged();
     }
-    
-    public void EditNote(Note toEdit)
+
+    /// <summary>
+    ///     Handles the UI action of editing a note by occupying <see cref="EditedNote" /> with the content of the note being
+    ///     edited.
+    /// </summary>
+    /// <param name="toEdit">The note that is to be edited</param>
+    private void EditNote(Note toEdit)
     {
-        EdittedNote = new Note()
+        EditedNote = new Note
         {
             NoteId = toEdit.NoteId,
             Content = toEdit.Content
         };
     }
 
-    public async Task SubmitEdit(Note note)
+    /// <summary>
+    ///     Handles the UI action of submitting the changes to a note, by passing <see cref="EditedNote" /> to
+    ///     <see cref="NoteService" />
+    /// </summary>
+    /// <param name="editedNote">The edited note that is to be submitted</param>
+    private async Task SubmitEdit(Note editedNote)
     {
-        await NoteService.EditNote(note);
-        EdittedNote = null;
+        await NoteService.EditNote(editedNote);
+        EditedNote = null;
     }
 
-    public void AddReferenceLink(string name, int id)
-    {    
-        string url = $"<a href=\"/entitydetail/{id}\">{name}</a>";
-        ContentText += $" {url} ";  
-    }
-    
-    public void AddReferenceLinkToEdit(string name, int id)
+    /// <summary>
+    ///     Adds any character's hyperlink to the note creation input box.
+    /// </summary>
+    /// <param name="name">The name of the character/item</param>
+    /// <param name="id">the unique four-digit ID of the character/item</param>
+    private void AddReferenceLink(string name, int id)
     {
-        if (EdittedNote != null)
+        string url = $"<a href=\"/entitydetail/{id}\">{name}</a>";
+        ContentText += $" {url} ";
+    }
+
+    /// <summary>
+    ///     Adds any character's hyperlink to the note editing input box.
+    /// </summary>
+    /// <param name="name">The name of the character/item</param>
+    /// <param name="id">The unique four-digit ID of the character/item</param>
+    private void AddReferenceLinkToEdit(string name, int id)
+    {
+        if (EditedNote != null)
         {
             string url = $"<a href=\"/entitydetail/{id}\">{name}</a>";
-            EdittedNote.Content += $" {url} ";
+            EditedNote.Content += $" {url} ";
         }
     }
 }

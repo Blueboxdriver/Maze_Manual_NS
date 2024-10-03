@@ -30,7 +30,10 @@
 </div>
 
 @code {
-
+    /// <summary>
+    ///     Redirects the user to the character detail page for the selected character
+    /// </summary>
+    /// <param name="characterId">The unique four-digit ID of the character selected</param>
     void NavigateToDetails(int characterId)
     {
         NavigationManager.NavigateTo($"/entitydetail/{characterId}");

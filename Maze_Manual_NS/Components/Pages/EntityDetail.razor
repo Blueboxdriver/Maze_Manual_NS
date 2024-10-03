@@ -62,11 +62,25 @@
 {
     [Parameter] public int PageId { get; set; }
 
+    /// <summary>
+    ///     Represents the monster entity displayed on the page.
+    /// </summary>
     private Monster monster;
-    private Player player;
-    private Potion potion;
-    private Weapon weapon;
 
+    /// <summary>
+    ///     Represents the player entity displayed on the page.
+    /// </summary>
+    private Player player;
+
+    /// <summary>
+    ///     Represents the potion item displayed on the page.
+    /// </summary>
+    private Potion potion;
+
+    /// <summary>
+    ///     Represents the weapon item displayed on the page.
+    /// </summary>
+    private Weapon weapon;
 
     protected override void OnInitialized()
     {

@@ -28,8 +28,13 @@
 
 @code {
 
+    /// <summary>
+    ///     Redirects the user to the character detail page for the selected item
+    /// </summary>
+    /// <param name="itemId">The unique four-digit ID of the item selected</param>
     void NavigateToDetails(int itemId)
     {
         NavigationManager.NavigateTo($"/entitydetail/{itemId}");
     }
+
 }
