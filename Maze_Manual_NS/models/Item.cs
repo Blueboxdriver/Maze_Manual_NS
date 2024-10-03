@@ -1,4 +1,5 @@
 using Maze_Manual_NS.Services;
+using Microsoft.AspNetCore.Components;
 
 namespace Maze_Manual_NS.models;
 /// <summary>
@@ -12,7 +13,7 @@ public abstract class Item : IItemService
     public int ItemId { get; set; }
     
     public int ItemEffect { get; set; }
-    public string ItemDescription { get; set; }
+    public MarkupString ItemDescription { get; set; }
     public string ItemUrl { get; set; }
     public List<Item> Items { get; set; }
 
@@ -23,7 +24,7 @@ public abstract class Item : IItemService
         ItemId = itemId;
         ItemEffect = itemEffect;
         ItemUrl = itemUrl;
-        ItemDescription = itemDescription;
+        ItemDescription = new MarkupString(itemDescription);
     }
 
 

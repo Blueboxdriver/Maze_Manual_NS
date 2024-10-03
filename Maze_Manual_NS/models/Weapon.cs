@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Components;
+
 namespace Maze_Manual_NS.models;
 
 /// <summary>
