@@ -5,6 +5,8 @@
 @inject NavigationManager NavigationManager
 
 <div class="item-container">
+    <!-- This foreach loop goes through every character in the ItemService items list and prints them with different
+    CSS parameters depending on whether it's a potion or weapon. -->
     @foreach (Item items in ItemService.Items)
     {
         if (items is Potion)

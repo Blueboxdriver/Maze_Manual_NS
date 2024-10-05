@@ -8,10 +8,12 @@
 <h3>Notes</h3>
 
 Note: <input @bind="ContentText"/>
-
+<!-- When the button is pressed, whatever is typed is sent to the CreateNote method and is added to the notes List -->
 <button @onclick="CreateNote">Submit Post</button>
 <div class="reference-link">
     <h5> Reference Links </h5>
+    <!-- The following foreach loops go through both CharacterService's and ItemService's lists and prints them out to
+    the right of the screen as boxes. -->
     @foreach (ICharacterService character in CharacterService.Entities)
     {
         <div class="reference-box">
@@ -28,9 +30,13 @@ Note: <input @bind="ContentText"/>
 
 @foreach (Note tNotes in NoteService.Notes)
 {
+    // This foreach loop goes through every note in the NoteService list. 
     <div>
         @if (EditedNote != null && tNotes.NoteId == EditedNote.NoteId)
         {
+            // This if statement and its subsequent foreach loop does the same thing as above. It's separate because
+            // the normal AddReferenceLink method would apply to the edit text box that opens.
+            // Also, it opens up the input box so you can edit your note.
             <input @bind="EditedNote.Content"/>
             <button @onclick="() => SubmitEdit(EditedNote)">Submit Edit</button>
             <div class="reference-link">
@@ -51,8 +57,8 @@ Note: <input @bind="ContentText"/>
         }
         else
         {
+            //Assuming a note isn't being edited, every note is printed out with Edit and Delete buttons that call their respective method.
             <p>@((MarkupString)tNotes.Content)</p>
-            <!-- Render HTML content -->
             <button @onclick="() => DeleteNote(tNotes)">Delete</button>
             <button @onclick="() => EditNote(tNotes)">Edit</button>
         }

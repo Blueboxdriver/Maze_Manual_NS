@@ -5,24 +5,26 @@
 @inject NavigationManager NavigationManager
 
 <div class="entity-container">
-    @foreach (var test in CharacterService.Entities)
+    <!-- This foreach loop goes through every character in the CharacterService entities list and prints them with different
+    CSS parameters depending on whether it's a player or monster. -->
+    @foreach (var character in CharacterService.Entities)
     {
-        if (test is Monster)
+        if (character is Monster)
         {
-            <div class="monster-item" @onclick="() => NavigateToDetails(test.CharacterId)">
-                <img src="@test.ImgUrl" width="150" height="150"/>
-                <p>@test.Name</p>
-                <p>Health: @test.Health</p>
-                <p>Damage: @test.Damage</p>
+            <div class="monster-item" @onclick="() => NavigateToDetails(character.CharacterId)">
+                <img src="@character.ImgUrl" alt="Image of @character.Name" width="150" height="150"/>
+                <p>@character.Name</p>
+                <p>Health: @character.Health</p>
+                <p>Damage: @character.Damage</p>
             </div>
         }
         else
-        { 
-            <div class="player-item" @onclick="() => NavigateToDetails(test.CharacterId)">
-                <img src="@test.ImgUrl" width="150" height="150"/>
-                <p>@test.Name</p>
-                <p>Health: @test.Health</p>
-                <p>Damage: @test.Damage</p>
+        {
+            <div class="player-item" @onclick="() => NavigateToDetails(character.CharacterId)">
+                <img src="@character.ImgUrl" alt="Image of @character.Name" width="150" height="150"/>
+                <p>@character.Name</p>
+                <p>Health: @character.Health</p>
+                <p>Damage: @character.Damage</p>
             </div>
         }
 
