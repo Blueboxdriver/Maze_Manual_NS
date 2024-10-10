@@ -4,42 +4,30 @@ using Microsoft.AspNetCore.Components;
 namespace Maze_Manual_NS.Services;
 
 /// <summary>
-///     A service that holds a list of all items that can be found in the maze. Implements <see cref="IItemService"/>
+///     A service that holds a list of all items that can be found in the maze. Implements <see cref="IItemService" />
 /// </summary>
 public class ItemService : IItemService
 {
-    /// <summary>
-    ///     <inheritdoc />
-    /// </summary>
+    /// <inheritdoc />
     public string ItemName { get; set; }
 
-    /// <summary>
-    ///     <inheritdoc />
-    /// </summary>
+    /// <inheritdoc />
     public int ItemId { get; set; }
 
-    /// <summary>
-    ///     <inheritdoc />
-    /// </summary>
+    /// <inheritdoc />
     public int ItemEffect { get; set; }
 
-    /// <summary>
-    ///     <inheritdoc />
-    /// </summary>
+    /// <inheritdoc />
     public MarkupString ItemDescription { get; set; }
 
-    /// <summary>
-    ///     <inheritdoc />
-    /// </summary>
+    /// <inheritdoc />
     public string ItemUrl { get; set; }
 
-    /// <summary>
-    ///     <inheritdoc />
-    /// </summary>
+    /// <inheritdoc />
     public List<Item> Items { get; set; }
 
     /// <summary>
-    ///     A constructor that fills the <see cref="Items" /> with items that can be found in the maze.
+    ///     Creates a new instance of <see cref="ItemService"/> that fills the <see cref="Items" /> list with items that can be found in the maze.
     /// </summary>
     public ItemService()
     {
@@ -92,7 +80,7 @@ public class ItemService : IItemService
                 "both producers and users, driving up the price of ammunition drastically. Atelier Logic is one of the few workshops that produces firearms, " +
                 "their exclusivity provides them an edge in their quality as well. Most Fixer offices (if they can afford it) purchase from Atelier Logic <br /> <br />" +
                 "The pistol you find in the basement appears to be a commissioned piece, the original owner being someone you can't tell. Surprisingly, it comes with" +
-                " an impressive stache of bullets that have tax stamps. At least you won't have a Claw breathing down your neck for using it."),
+                " an impressive stash of bullets that have tax stamps. At least you won't have a Claw breathing down your neck for using it."),
             new Weapon("Rosespanner Workshop Spear",
                 "../images/Rosespanner_Spear.png",
                 25,

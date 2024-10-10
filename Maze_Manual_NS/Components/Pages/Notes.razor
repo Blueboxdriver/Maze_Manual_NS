@@ -68,14 +68,10 @@ Note: <input @bind="ContentText"/>
 
 @code
 {
-    /// <summary>
-    ///     A string representing the text content of a note
-    /// </summary>
+    //Represents the text content of a note
     private string ContentText { get; set; }
 
-    /// <summary>
-    ///     A note object that's use to determine what note is being edited
-    /// </summary>
+    //A note object that's holds whatever note is being edited.
     private Note EditedNote { get; set; }
 
     /// <summary>

@@ -8,43 +8,29 @@ namespace Maze_Manual_NS.Services;
 /// </summary>
 public class CharacterService : ICharacterService
 {
-    /// <summary>
-    ///     <inheritdoc />
-    /// </summary>
+    /// <inheritdoc />
     public int CharacterId { get; set; }
 
-    /// <summary>
-    ///     <inheritdoc />
-    /// </summary>
+    /// <inheritdoc />
     public string Name { get; set; }
 
-    /// <summary>
-    ///     <inheritdoc />
-    /// </summary>
+    /// <inheritdoc />
     public string ImgUrl { get; set; }
 
-    /// <summary>
-    ///     <inheritdoc />
-    /// </summary>
+    /// <inheritdoc />
     public int Health { get; set; }
 
-    /// <summary>
-    ///     <inheritdoc />
-    /// </summary>
+    /// <inheritdoc />
     public int Damage { get; set; }
 
-    /// <summary>
-    ///     <inheritdoc />
-    /// </summary>
+    /// <inheritdoc />
     public MarkupString Description { get; set; }
 
-    /// <summary>
-    ///     <inheritdoc />
-    /// </summary>
+    /// <inheritdoc />
     public List<ICharacterService> Entities { get; set; }
 
     /// <summary>
-    ///     Constructor that fills the <see cref="Entities" /> list with a list of pre-made entities that exist in the maze.
+    ///     Creates a new instance of <see cref="CharacterService"/> that fills the <see cref="Entities" /> list with characters/monsters that can be found in the maze.
     /// </summary>
     public CharacterService()
     {

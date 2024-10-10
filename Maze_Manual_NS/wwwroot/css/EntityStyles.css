@@ -14,10 +14,9 @@
     border-radius: 8px; /* Rounded corners */
     padding: 10px; /* Padding inside the box */
     width: 200px; /* Set a fixed width for the monster boxes */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    display: flex;
     flex-direction: column; /* Arrange content in a column */
     align-items: flex-start; /* Align items to the left */
+    display: flex;
 }
 
 .player-item {
@@ -26,8 +25,7 @@
     border-radius: 8px; /* Rounded corners */
     padding: 10px; /* Padding inside the box */
     width: 200px; /* Set a fixed width for the player boxes */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    display: flex;
     flex-direction: column; /* Arrange content in a column */
     align-items: flex-start; /* Align items to the left */
+    display: flex;
 }

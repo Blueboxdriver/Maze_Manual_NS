@@ -38,6 +38,12 @@
             <br/>
             <p>@potion.ItemDescription</p>
         }
+        else
+        {
+            <iframe width="798" height="564" src="https://www.youtube.com/embed/nnqGY1RdlW4" title="[Limbus Company]Erlking vs Wuthering Heights" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <p> If you see this, you lost the game.</p>
+            <p> You also typed a random ID into the URL. Don't do that.</p>
+        }
     </div>
 
     <div class="image-container">
@@ -86,9 +92,9 @@
     private Weapon weapon;
 
     protected override void OnInitialized()
-    // The only reason I'm not putting an XML comment on this method is because it would overwrite the already existing documentation
-    // on OnInitialized(). But essentially, when the page is initialized the code fills one of the character/item objects
-    // with the data from the item/character that was clicked on.
+        // The only reason I'm not putting an XML comment on this method is because it would overwrite the already existing documentation
+        // on OnInitialized(). But essentially, when the page is initialized the code fills one of the character/item objects
+        // with the data from the item/character that was clicked on.
     {
         ICharacterService? entity = CharacterService.Entities.FirstOrDefault(e => e.CharacterId == PageId);
 

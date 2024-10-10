@@ -10,23 +10,23 @@ public interface INoteService
     List<Note> Notes { get; set; }
 
     /// <summary>
-    ///     Adds a new note to the list of Notes
+    /// Adds a new note to the list of notes and assigns it a unique identifier.
     /// </summary>
-    /// <param name="note">The note object that contains the content and note ID to be added.</param>
-    /// <returns>A task representing an asynchronous operation</returns>
+    /// <param name="note">The note to be added.</param>
+    /// <returns>A completed task once the note has been added.</returns>
     Task AddNote(Note note);
 
     /// <summary>
-    ///     Edits a currently existing note in the list of Notes
+    ///     Edits an existing note by updating its content based on the provided note's identifier.
     /// </summary>
-    /// <param name="note">The note object containing the edited content to be updated.</param>
-    /// <returns>A task representing an asynchronous operation</returns>
+    /// <param name="note">The note being edited.</param>
+    /// <returns>A completed task once the note has been edited.</returns>
     Task EditNote(Note note);
 
     /// <summary>
-    ///     Removes a currently existing note in the list of Notes
+    /// Deletes a note from the list based on the provided note's identifier.
     /// </summary>
-    /// <param name="note">The note object that is being removed</param>
-    /// <returns>A task representing an ansynchronous operation</returns>
+    /// <param name="note">The note object that is being removed.</param>
+    /// <returns>A completed task once the note has been removed.</returns>
     Task DeleteNote(Note note);
 }
