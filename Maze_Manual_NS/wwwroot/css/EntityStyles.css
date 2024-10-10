@@ -1,31 +1,30 @@
 .entity-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Creates four equal columns */
-    grid-template-rows: repeat(2, auto); /* Creates two rows, height based on content */
-    gap: 20px; /* Adds space between boxes */
-    justify-items: center; /* Center items in their grid cells */
-    margin: 0 auto; /* Center the grid container */
-    max-width: 1200px; /* Optional: set a max width for the grid container */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 20px;
+    justify-items: center;
+    margin: 0 auto;
 }
 
 .monster-item {
-    background-color: lightblue; /* Light blue background for monsters */
-    border: 2px solid blue; /* Blue border for monsters */
-    border-radius: 8px; /* Rounded corners */
-    padding: 10px; /* Padding inside the box */
-    width: 200px; /* Set a fixed width for the monster boxes */
-    flex-direction: column; /* Arrange content in a column */
-    align-items: flex-start; /* Align items to the left */
+    background-color: lightblue;
+    border: 2px solid blue;
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+    flex-direction: column;
+    align-items: flex-start;
     display: flex;
 }
 
 .player-item {
-    background-color: lightcoral; /* Light red background for players */
-    border: 2px solid red; /* Red border for players */
-    border-radius: 8px; /* Rounded corners */
-    padding: 10px; /* Padding inside the box */
-    width: 200px; /* Set a fixed width for the player boxes */
-    flex-direction: column; /* Arrange content in a column */
-    align-items: flex-start; /* Align items to the left */
+    background-color: lightcoral;
+    border: 2px solid red;
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+    flex-direction: column;
+    align-items: flex-start;
     display: flex;
 }

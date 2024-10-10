@@ -7,7 +7,10 @@
 
 <h3>Notes</h3>
 
-Note: <input @bind="ContentText"/>
+Note:
+<br/>
+<textarea @bind="ContentText" rows="4" cols="50"></textarea>
+<br/>
 <!-- When the button is pressed, whatever is typed is sent to the CreateNote method and is added to the notes List -->
 <button @onclick="CreateNote">Submit Post</button>
 <div class="reference-link">
@@ -35,9 +38,9 @@ Note: <input @bind="ContentText"/>
         @if (EditedNote != null && tNotes.NoteId == EditedNote.NoteId)
         {
             // This if statement and its subsequent foreach loop does the same thing as above. It's separate because
-            // the normal AddReferenceLink method would apply to the edit text box that opens.
+            // the normal AddReferenceLink method wouldn't apply to the edit text box that opens.
             // Also, it opens up the input box so you can edit your note.
-            <input @bind="EditedNote.Content"/>
+            <textarea @bind="EditedNote.Content" rows="4" cols="50"> </textarea>
             <button @onclick="() => SubmitEdit(EditedNote)">Submit Edit</button>
             <div class="reference-link">
                 <h5> Reference Links </h5>
