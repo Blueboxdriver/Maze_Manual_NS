@@ -96,7 +96,7 @@
         // on OnInitialized(). But essentially, when the page is initialized the code fills one of the character/item objects
         // with the data from the item/character that was clicked on.
     {
-        ICharacterService? entity = CharacterService.Entities.FirstOrDefault(e => e.CharacterId == PageId);
+        ICharacterService? entity = CharacterService.Entities.FirstOrDefault(searchedEntity => searchedEntity.CharacterId == PageId);
 
         if (entity != null)
         {
@@ -112,7 +112,7 @@
         }
         else
         {
-            Item? item = ItemService.Items.FirstOrDefault(e => e.ItemId == PageId);
+            Item? item = ItemService.Items.FirstOrDefault(searchedItem => searchedItem.ItemId == PageId);
             switch (item)
             {
                 case Potion foundPotion:

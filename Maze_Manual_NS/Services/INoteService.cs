@@ -17,7 +17,7 @@ public interface INoteService
     Task AddNote(Note note);
 
     /// <summary>
-    ///     Edits an existing note by updating its content based on the provided note's identifier.
+    /// Edits an existing note by updating its content based on the provided note's identifier.
     /// </summary>
     /// <param name="note">The note being edited.</param>
     /// <returns>A completed task once the note has been edited.</returns>
